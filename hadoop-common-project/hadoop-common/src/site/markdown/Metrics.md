@@ -87,6 +87,7 @@ The default timeunit used for RPC metrics is milliseconds (as per the below desc
 | `RpcAuthorizationFailures` | Total number of authorization failures |
 | `RpcAuthorizationSuccesses` | Total number of authorization successes |
 | `RpcClientBackoff` | Total number of client backoff requests |
+| `RpcClientBackoffDisconnected` | Total number of client backoff requests that are disconnected. This is a subset of RpcClientBackoff |
 | `RpcSlowCalls` | Total number of slow RPC calls |
 | `RpcRequeueCalls` | Total number of requeue RPC calls |
 | `RpcCallsSuccesses` | Total number of RPC calls that are successfully processed |
@@ -425,6 +426,12 @@ Each metrics record contains tags such as SessionId and Hostname as additional i
 | `RamDiskBlocksLazyPersistWindows`*num*`s(50/75/90/95/99)thPercentileLatency` | The 50/75/90/95/99th percentile of latency between memory write and disk persist in milliseconds (*num* seconds granularity). Percentile measurement is off by default, by watching no intervals. The intervals are specified by `dfs.metrics.percentiles.intervals`. |
 | `FsyncCount` | Total number of fsync |
 | `VolumeFailures` | Total number of volume failures occurred |
+| `DatanodeNetworkErrors` | Count of network errors on the datanode |
+| `DataNodeActiveXceiversCount` | Count of active dataNode xceivers |
+| `DataNodeReadActiveXceiversCount` | Count of read active dataNode xceivers |
+| `DataNodeWriteActiveXceiversCount` | Count of write active dataNode xceivers |
+| `DataNodePacketResponderCount` | Count of active DataNode packetResponder |
+| `DataNodeBlockRecoveryWorkerCount` | Count of active DataNode block recovery worker |
 | `ReadBlockOpNumOps` | Total number of read operations |
 | `ReadBlockOpAvgTime` | Average time of read operations in milliseconds |
 | `WriteBlockOpNumOps` | Total number of write operations |
@@ -451,6 +458,8 @@ Each metrics record contains tags such as SessionId and Hostname as additional i
 | `BlockReportsAvgTime` | Average time of block report operations in milliseconds |
 | `BlockReports`*ServiceId*`-`*NNId*`NumOps` | Total number of block report operations to specific serviceId and nnId |
 | `BlockReports`*ServiceId*`-`*NNId*`AvgTime` | Average time of block report operations to specific serviceId and nnId in milliseconds |
+| `BlockReportsCreateCostMillsNumOps` | Total number of block report creating operations |
+| `BlockReportsCreateCostMillsAvgTime` | Average time of block report creating operations in milliseconds |
 | `IncrementalBlockReportsNumOps` | Total number of incremental block report operations |
 | `IncrementalBlockReportsAvgTime` | Average time of incremental block report operations in milliseconds |
 | `IncrementalBlockReports`*ServiceId*`-`*NNId*`NumOps` | Total number of incremental block report operations to specific serviceId and nnId |
@@ -508,8 +517,12 @@ Each metrics record contains tags such as SessionId and Hostname as additional i
 | `PacketsSlowWriteToMirror` | Total number of packets whose write to other Datanodes in the pipeline takes more than a certain time (300ms by default) |
 | `PacketsSlowWriteToDisk` | Total number of packets whose write to disk takes more than a certain time (300ms by default) |
 | `PacketsSlowWriteToOsCache` | Total number of packets whose write to os cache takes more than a certain time (300ms by default) |
-| `slowFlushOrSyncCount` | Total number of packets whose sync/flush takes more than a certain time (300ms by default) |
-| `slowAckToUpstreamCount` | Total number of packets whose upstream ack takes more than a certain time (300ms by default) |
+| `SlowFlushOrSyncCount` | Total number of packets whose sync/flush takes more than a certain time (300ms by default) |
+| `SlowAckToUpstreamCount` | Total number of packets whose upstream ack takes more than a certain time (300ms by default) |
+| `SumOfActorCommandQueueLength` | Sum of all BPServiceActors command queue length |
+| `NumProcessedCommands` | Num of processed commands of all BPServiceActors |
+| `ProcessedCommandsOpNumOps` | Total number of processed commands operations |
+| `ProcessedCommandsOpAvgTime` | Average time of processed commands operations in milliseconds |
 
 FsVolume
 --------
